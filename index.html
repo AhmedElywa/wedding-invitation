@@ -50,6 +50,9 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
 
+	<!-- Custom Animations -->
+	<link rel="stylesheet" href="css/custom-animations.css">
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -59,26 +62,13 @@
 
 	</head>
 	<body>
-		
-	<div class="fh5co-loader"></div>
-	
-	<div id="page">
-	<nav class="fh5co-nav" role="navigation">
-		<div class="container">
-			<div class="row">
-	
-				<div class="col-xs-10 text-right menu-1">
-					<ul>
-						<li class="active"><a href="index.html">Home</a></li>
-						<li class="active"><a href="#fh5co-event">Events</a></li>
-						<li class="active"><a href="#fh5co-gallery">Gallery</a></li>
-					</ul>
-				</div>
-			</div>
-			
-		</div>
-	</nav>
 
+	<div class="fh5co-loader"></div>
+
+	<!-- Floating Hearts Background -->
+	<div class="hearts-container" id="hearts-container"></div>
+
+	<div id="page">
 	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/bg.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -126,7 +116,7 @@
 									<div class="event-col">
 
 										<i class="icon-clock"></i>
-										<span>TBA</span>
+										<span>7:00 PM</span>
 									</div>
 									<p>At <b>High Level - Sindbad Village</b></p>
 									<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d863.2559930788157!2d31.012802!3d30.795846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f7c90a58b1c2e3%3A0xe29879deb2163beb!2z2YLYp9i52Ycg2YfYp9mKINmE24zZgdmK2YQ!5e0!3m2!1sen!2seg!4v1732031234567!5m2!1sen!2seg" width="100%" height="250" style="border:0; max-width: 600px; margin: 20px auto; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -183,6 +173,8 @@
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
+	<!-- Floating Hearts -->
+	<script src="js/hearts.js"></script>
     <!-- clock -->
 	<script src="js/clock.js"></script>
 	<!-- jQuery Easing -->

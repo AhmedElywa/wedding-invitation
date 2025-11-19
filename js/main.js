@@ -214,6 +214,26 @@
 	};
 
 	
+	// Smooth scroll for navigation links
+	var smoothScroll = function() {
+		$('.menu-1 a[href^="#"], #fh5co-offcanvas a[href^="#"]').on('click', function(event) {
+			event.preventDefault();
+
+			var target = $(this.hash);
+			if (target.length) {
+				// Close mobile menu if open
+				if ($('body').hasClass('offcanvas')) {
+					$('body').removeClass('overflow offcanvas');
+					$('.js-fh5co-nav-toggle').removeClass('active');
+				}
+
+				$('html, body').animate({
+					scrollTop: target.offset().top
+				}, 800, 'easeInOutExpo');
+			}
+		});
+	};
+
 	$(function(){
 		mobileMenuOutsideClick();
 		parallax();
@@ -226,6 +246,7 @@
 		loaderPage();
 		counter();
 		counterWayPoint();
+		smoothScroll();
 	});
 
 

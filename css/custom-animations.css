@@ -137,15 +137,17 @@
   filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
 }
 
-/* Enhanced countdown clock */
+/* Enhanced countdown clock - fixed overflow */
 .flipTimebox {
   animation: fade-in-up-enhanced 2s ease-out;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  margin: 30px 0;
+  padding: 20px;
+  background: transparent;
+  border-radius: 0;
+  backdrop-filter: none;
+  box-shadow: none;
+  margin: 20px 0;
+  position: relative;
+  z-index: 1;
 }
 
 /* Enhanced button - with black text */
@@ -263,14 +265,14 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
-/* Extend header section to include countdown */
+/* Header section - removed min-height to fix overflow */
 #fh5co-header {
-  min-height: 100vh !important;
-  padding-bottom: 80px !important;
+  min-height: auto;
+  padding-bottom: 50px;
 }
 
 #fh5co-header .display-tc {
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 /* Gallery enhancements */
@@ -285,22 +287,20 @@
   box-shadow: 0 10px 40px rgba(255, 107, 157, 0.4);
 }
 
-/* Section headings */
+/* Section headings - fixed visibility */
 .fh5co-heading h2 {
   font-size: 48px !important;
   font-weight: 700 !important;
-  background: linear-gradient(45deg, #ff6b9d, #c44569);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #646464 !important;
   position: relative;
-  display: inline-block;
+  display: block;
+  padding-bottom: 20px;
 }
 
 .fh5co-heading h2:after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100px;
@@ -309,10 +309,10 @@
   border-radius: 2px;
 }
 
-/* Navigation menu styling - no shadow, better visibility */
+/* Navigation menu styling - no shadow, transparent background */
 .fh5co-nav {
-  background: rgba(0, 0, 0, 0.5) !important;
-  backdrop-filter: blur(10px);
+  background: transparent !important;
+  backdrop-filter: none !important;
   box-shadow: none !important;
   padding: 20px 0 !important;
 }
@@ -346,6 +346,257 @@
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll reveal animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Navigation underline animation */
+.fh5co-nav ul li a {
+  position: relative;
+}
+
+.fh5co-nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6b9d, #c44569);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.fh5co-nav ul li a:hover::after {
+  width: 80%;
+}
+
+/* Floating animation for fingerprint image */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+#fh5co-header img {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+/* Countdown clock pulse - disabled to fix overflow */
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+.flip-clock-wrapper {
+  animation: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* Button ripple effect */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.btn-default::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+}
+
+.btn-default:active::after {
+  animation: ripple 0.6s ease-out;
+}
+
+/* Gallery image zoom and glow */
+#fh5co-gallery-list li a {
+  position: relative;
+  background-size: 100%;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#fh5co-gallery-list li:hover a {
+  background-size: 110%;
+}
+
+#fh5co-gallery-list li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255, 107, 157, 0.3), rgba(196, 69, 105, 0.3));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 15px;
+}
+
+#fh5co-gallery-list li:hover::after {
+  opacity: 1;
+}
+
+/* Staggered animation for gallery items - removed to fix disappearing */
+#fh5co-gallery-list li:nth-child(1),
+#fh5co-gallery-list li:nth-child(2),
+#fh5co-gallery-list li:nth-child(3) {
+  opacity: 1;
+  animation: none;
+}
+
+/* Map interactive effect */
+.event-wrap iframe {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.event-wrap iframe:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 107, 157, 0.3);
+}
+
+/* Icon bounce on hover */
+.event-col i {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.event-wrap:hover .event-col i {
+  transform: scale(1.3) rotate(360deg);
+}
+
+/* Section entrance animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scroll to top button bounce */
+.gototop.active {
+  animation: bounceIn 0.6s ease;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.gototop a {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.gototop a:hover {
+  transform: translateY(-5px) scale(1.1);
+  background: linear-gradient(45deg, #ff6b9d, #c44569);
+}
+
+/* Text typing effect for main heading */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Parallax-like effect on scroll */
+@keyframes parallax {
+  to {
+    background-position: 50% 100%;
+  }
+}
+
+/* Loading fade enhancement */
+.fh5co-loader {
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Background overlay animation */
+#fh5co-header .overlay {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Heartbeat for date */
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  10%, 30% {
+    transform: scale(1.05);
+  }
+  20%, 40% {
+    transform: scale(1);
+  }
+}
+
+#fh5co-header h2:first-of-type {
+  animation: fade-in-up-enhanced 1.2s ease-out, heartbeat 3s ease-in-out 2s infinite;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
   #fh5co-header h1 {
@@ -354,6 +605,7 @@
 
   #fh5co-header h2:first-of-type {
     font-size: 28px !important;
+    animation: fade-in-up-enhanced 1.2s ease-out;
   }
 
   #fh5co-header h2:last-of-type {
@@ -377,5 +629,188 @@
   .fh5co-nav ul li a {
     font-size: 14px;
     padding: 8px 10px;
+  }
+
+  /* Reduce animations on mobile */
+  #fh5co-header img {
+    animation: none;
+  }
+
+  .flip-clock-wrapper {
+    animation: none;
+  }
+
+  /* Fix mobile scrolling */
+  body {
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    position: relative !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #page {
+    overflow-x: hidden;
+    overflow-y: visible !important;
+    position: relative !important;
+  }
+
+  body.offcanvas {
+    overflow: hidden !important;
+  }
+
+  /* Keep hearts visible but slightly smaller on mobile */
+  .heart.small {
+    font-size: 25px;
+  }
+
+  .heart.medium {
+    font-size: 30px;
+  }
+
+  .heart.large {
+    font-size: 40px;
+  }
+}
+
+/* Floating hearts background animation */
+.hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.heart {
+  position: absolute;
+  bottom: -50px;
+  font-size: 40px;
+  color: rgba(255, 182, 193, 0.7);
+  animation: floatUp 15s linear infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.heart::before {
+  content: '♥';
+  text-shadow: 0 0 15px rgba(255, 182, 193, 0.9);
+}
+
+/* Different sizes for variety */
+.heart.small {
+  font-size: 35px;
+  animation-duration: 12s;
+}
+
+.heart.medium {
+  font-size: 45px;
+  animation-duration: 15s;
+}
+
+.heart.large {
+  font-size: 60px;
+  animation-duration: 18s;
+}
+
+/* Float up animation */
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0) rotate(180deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh) translateX(50px) rotate(540deg);
+  }
+}
+
+/* Animation variations for different hearts */
+.heart:nth-child(1) { left: 5%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 15%; animation-delay: 2s; }
+.heart:nth-child(3) { left: 25%; animation-delay: 4s; }
+.heart:nth-child(4) { left: 35%; animation-delay: 6s; }
+.heart:nth-child(5) { left: 45%; animation-delay: 8s; }
+.heart:nth-child(6) { left: 55%; animation-delay: 10s; }
+.heart:nth-child(7) { left: 65%; animation-delay: 1s; }
+.heart:nth-child(8) { left: 75%; animation-delay: 3s; }
+.heart:nth-child(9) { left: 85%; animation-delay: 5s; }
+.heart:nth-child(10) { left: 95%; animation-delay: 7s; }
+
+/* Sway animation for more natural movement */
+.heart.sway-left {
+  animation-name: floatUpSwayLeft;
+}
+
+.heart.sway-right {
+  animation-name: floatUpSwayRight;
+}
+
+@keyframes floatUpSwayLeft {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0) rotate(180deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50vh) translateX(-30px) rotate(360deg);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh) translateX(0px) rotate(540deg);
+  }
+}
+
+@keyframes floatUpSwayRight {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0) rotate(180deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50vh) translateX(30px) rotate(360deg);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh) translateX(0px) rotate(540deg);
+  }
+}
+
+/* Ensure hearts container doesn't interfere with content */
+#page {
+  position: relative;
+  z-index: 1;
+}
+
+/* Accessibility - respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .heart {
+    display: none;
   }
 }
