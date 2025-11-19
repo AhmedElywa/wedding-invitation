@@ -406,7 +406,6 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-event .event-wrap {
   border: 2px solid rgba(0, 0, 0, 0.5);
   padding: 30px;
-  padding-bottom: 50px;
   width: 100%;
   float: left;
   -webkit-border-radius: 4px;
@@ -870,7 +869,7 @@ form label {
 #fh5co-header .display-tc h2,
 #fh5co-counter .display-tc h2,
 .fh5co-cover .display-tc h2 {
-  font-size: 42px;
+  font-size: 20px;
   line-height: 1.5;
   margin-top: 20px;
   font-family: Engagement;
@@ -879,7 +878,7 @@ form label {
   #fh5co-header .display-tc h2,
   #fh5co-counter .display-tc h2,
   .fh5co-cover .display-tc h2 {
-    font-size: 22px;
+    font-size: 16px;
   }
 }
 #fh5co-header .display-tc .btn,
