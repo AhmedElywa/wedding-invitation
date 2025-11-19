@@ -605,7 +605,7 @@ html {
 
   #fh5co-header h2:first-of-type {
     font-size: 28px !important;
-    animation: fade-in-up-enhanced 1.2s ease-out;
+    animation: fade-in-up-enhanced 1.2s ease-out, heartbeat 3s ease-in-out 2s infinite;
   }
 
   #fh5co-header h2:last-of-type {
@@ -631,13 +631,13 @@ html {
     padding: 8px 10px;
   }
 
-  /* Reduce animations on mobile */
+  /* Keep animations on mobile but reduce intensity */
   #fh5co-header img {
-    animation: none;
+    animation: float-gentle 4s ease-in-out infinite;
   }
 
   .flip-clock-wrapper {
-    animation: none;
+    animation: fade-in-up-enhanced 2s ease-out;
   }
 
   /* Fix mobile scrolling */
@@ -658,7 +658,19 @@ html {
     overflow: hidden !important;
   }
 
-  /* Keep hearts visible but slightly smaller on mobile */
+  /* Keep hearts and butterflies visible but slightly smaller on mobile */
+  .hearts-container {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .heart,
+  .butterfly {
+    display: block !important;
+    visibility: visible !important;
+  }
+
   .heart.small {
     font-size: 25px;
   }
@@ -669,6 +681,18 @@ html {
 
   .heart.large {
     font-size: 40px;
+  }
+
+  .butterfly.small {
+    font-size: 22px;
+  }
+
+  .butterfly.medium {
+    font-size: 28px;
+  }
+
+  .butterfly.large {
+    font-size: 35px;
   }
 }
 
@@ -681,7 +705,7 @@ html {
   height: 100%;
   overflow: hidden;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 10;
 }
 
 .heart {
@@ -800,6 +824,58 @@ html {
   z-index: 1;
 }
 
+/* Butterfly animations */
+.butterfly {
+  position: absolute;
+  bottom: -50px;
+  font-size: 35px;
+  color: rgba(255, 182, 193, 0.8);
+  animation: floatUp 16s linear infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.butterfly::before {
+  content: '🦋';
+  text-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+  animation: flutter 0.5s ease-in-out infinite;
+}
+
+/* Flutter wing animation for butterflies */
+@keyframes flutter {
+  0%, 100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(1.1);
+  }
+}
+
+/* Different sizes for butterflies */
+.butterfly.small {
+  font-size: 30px;
+  animation-duration: 14s;
+}
+
+.butterfly.medium {
+  font-size: 40px;
+  animation-duration: 17s;
+}
+
+.butterfly.large {
+  font-size: 50px;
+  animation-duration: 20s;
+}
+
+/* Butterfly sway animations */
+.butterfly.sway-left {
+  animation-name: floatUpSwayLeft;
+}
+
+.butterfly.sway-right {
+  animation-name: floatUpSwayRight;
+}
+
 /* Accessibility - respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -810,7 +886,8 @@ html {
     transition-duration: 0.01ms !important;
   }
 
-  .heart {
+  .heart,
+  .butterfly {
     display: none;
   }
 }
