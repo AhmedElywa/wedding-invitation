@@ -79,7 +79,9 @@
   color: #fff !important;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   animation: fade-in-up-enhanced 1s ease-out, subtle-pulse 3s ease-in-out infinite;
-  white-space: nowrap !important;
+  line-height: 1.2 !important;
+  display: block !important;
+  white-space: normal !important;
 }
 
 /* Mobile font size adjustment to keep heading on one line */
@@ -302,12 +304,25 @@
 
 /* Header section - removed min-height to fix overflow */
 #fh5co-header {
-  min-height: auto;
+  min-height: 100vh;
   padding-bottom: 50px;
+  display: flex;
+  align-items: center;
+}
+
+#fh5co-header .container {
+  width: 100%;
+}
+
+#fh5co-header .display-t {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
 }
 
 #fh5co-header .display-tc {
-  padding-bottom: 20px;
+  padding: 40px 20px;
+  width: 100%;
 }
 
 /* Gallery enhancements */
@@ -707,22 +722,47 @@ html {
 
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
+  /* Mobile banner flexbox adjustments */
+  #fh5co-header {
+    min-height: 100vh;
+    padding: 20px 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #fh5co-header .display-t {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  #fh5co-header .display-tc {
+    padding: 30px 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
   /* Enhanced heading animations for mobile */
   #fh5co-header h1 {
     font-size: 50px !important;
     animation: mobile-bounce-in 1s ease-out, subtle-pulse 3s ease-in-out 1.5s infinite;
+    margin-bottom: 20px !important;
   }
 
   #fh5co-header h2:first-of-type {
     font-size: 28px !important;
-    animation: mobile-slide-in-right 0.8s ease-out 0.3s backwards,
-               mobile-glow-pulse 4s ease-in-out 2s infinite;
+    animation: fade-in-up-enhanced 1.2s ease-out, gentle-glow 4s ease-in-out infinite;
   }
 
   #fh5co-header h2:last-of-type {
     font-size: 18px !important;
     padding: 15px;
-    animation: fade-in-up-enhanced 1s ease-out 0.6s backwards;
+    animation: fade-in-up-enhanced 1.5s ease-out;
   }
 
   /* Enhanced fingerprint animation on mobile */
