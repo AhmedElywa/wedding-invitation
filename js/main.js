@@ -208,10 +208,10 @@
 		}
 	};
 
-	// Parallax
-	var parallax = function() {
-		$(window).stellar();
-	};
+	// Parallax - Disabled to keep background fixed
+	// var parallax = function() {
+	// 	$(window).stellar();
+	// };
 
 	
 	// Smooth scroll for navigation links
@@ -236,7 +236,7 @@
 
 	$(function(){
 		mobileMenuOutsideClick();
-		parallax();
+		// parallax(); // Disabled to keep background fixed
 		offcanvasMenu();
 		burgerMenu();
 		contentWayPoint();

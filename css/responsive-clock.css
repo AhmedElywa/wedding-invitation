@@ -101,11 +101,18 @@
   .flipTimebox .flip-clock-meridium {
     font-size: 14px !important;
   }
+  .flipTimebox .flip-clock-wrapper {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
   .flipTimebox .flip-clock-wrapper ul.flip {
     width: 27px;
     background-color: transparent;
     box-shadow: none;
-    margin-left: -8px;
+    margin-left: 0 !important;
   }
   .flipTimebox .flip-clock-wrapper ul li {
     width: 30px;
@@ -114,7 +121,10 @@
     margin-left: -10px;
   }
   .flipTimebox {
-    margin: 50px 0 100px 20px;
+    margin: 50px auto 20px auto !important;
+    text-align: center;
+    display: flex !important;
+    justify-content: center !important;
   }
 }
 @media screen and (max-width: 360px) {
@@ -136,10 +146,14 @@
   }
   .flipTimebox .flip-clock-wrapper ul.flip {
     width: 25px;
-    margin-left: -14px;
+    margin-left: 0 !important;
   }
   .flipTimebox .flip-clock-wrapper {
-    padding-left: 5px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
   .flipTimebox .flip-clock-wrapper ul li {
     width: 25px;
@@ -148,16 +162,23 @@
     margin-left: -16px;
   }
   .flipTimebox {
-    margin: 50px 0 100px 20px;
+    margin: 50px auto 20px auto !important;
+    text-align: center;
+    display: flex !important;
+    justify-content: center !important;
   }
 }
 @media screen and (max-width: 320px) {
   .flipTimebox .flip-clock-wrapper {
-    padding-left: 5px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
   .flipTimebox .flip-clock-wrapper ul.flip {
     width: 22px;
-    margin-left: -16px;
+    margin-left: 0 !important;
   }
   .flipTimebox .flip-clock-wrapper ul li {
     width: 22px;
@@ -179,8 +200,16 @@
   }
 }
 
-.flip-clock-wrapper {
-  margin: 4em !important;
+@media screen and (min-width: 769px) {
+  .flip-clock-wrapper {
+    margin: 4em auto !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .flip-clock-wrapper {
+    margin: 0 auto !important;
+  }
 }
 
 .flip-clock-divider .flip-clock-label {
