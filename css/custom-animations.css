@@ -325,16 +325,36 @@
   width: 100%;
 }
 
-/* Gallery enhancements */
+/* Gallery enhancements - Single 16:9 image */
+#fh5co-gallery-list {
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+
 #fh5co-gallery-list li {
   transition: all 0.4s ease;
   border-radius: 15px;
   overflow: hidden;
+  width: 100% !important;
+  background-size: cover !important;
+  background-position: center !important;
+  padding-top: 56.25% !important; /* 16:9 aspect ratio (9/16 = 0.5625) */
+  position: relative !important;
+  height: 0 !important;
 }
 
 #fh5co-gallery-list li:hover {
-  transform: scale(1.05) rotate(2deg);
+  transform: scale(1.01);
   box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+}
+
+#fh5co-gallery-list li .case-studies-summary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 /* Section headings - fixed visibility */
