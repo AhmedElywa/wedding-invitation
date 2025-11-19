@@ -55,11 +55,14 @@ const observer = new IntersectionObserver(function(entries) {
 // Observe all sections with slide-up class
 document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.slide-up');
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(50px)';
-        section.style.transition = 'all 0.8s ease-out';
-        observer.observe(section);
+    sections.forEach((section, index) => {
+        // Don't hide the first slide-up section (countdown) - let it animate on load
+        if (index > 0) {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'all 0.8s ease-out';
+            observer.observe(section);
+        }
     });
 });
 
