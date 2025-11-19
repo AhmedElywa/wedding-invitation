@@ -1,11 +1,17 @@
-Source code for our wedding website 👫 (https://we.shyamjos.com/) , Based on HTML theme https://freehtml5.co/wedding-free-html5-bootstrap-template-for-wedding-websites
+# 💕 Mahmoud & Nouran Wedding Invitation
 
-To set the countdown date see below section in `js/clock.js`
+Welcome to our wedding website! We're thrilled to share our special day with you.
 
-````
-  // Target future date/24 hour time/Timezone
-  let targetDate = moment.tz("2023-10-29 12:00", "Asia/Kolkata");
-````
+## 📅 Save the Date
 
-## Screenshot
-![screenshot](https://repository-images.githubusercontent.com/698651028/d9cbed4d-10e2-44bd-bca8-e26a251ff182)
+**January 6, 2026 at 7:00 PM**
+High Level - Sindbad Village
+
+---
+
+Two hearts, one journey. We are excited to celebrate our special day with our loved ones. Join us as we begin our forever together.
+
+---
+
+*With love,*
+**Mahmoud & Nouran** ❤️
