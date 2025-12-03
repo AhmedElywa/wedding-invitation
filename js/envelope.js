@@ -63,7 +63,7 @@ function initEnvelope() {
             setTimeout(function() {
                 window.location.href = 'invitation.html';
             }, 500);
-        }, 1500); // Wait for envelope open animation
+        }, 2000); // Wait for envelope open animation
     });
 
     // Add hover effect hint

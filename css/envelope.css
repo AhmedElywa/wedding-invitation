@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Lato', sans-serif;
-    background: url('../images/bg3.jpg') no-repeat center center fixed;
+    background: url('../images/bg-2.jpg') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     display: flex;
@@ -108,6 +108,12 @@ body::before {
 .invitation-text {
     margin-bottom: 60px;
     animation: fadeIn 1.5s ease-out;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(1px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .invitation-text h1 {
@@ -351,6 +357,7 @@ body::before {
         transform: rotate(90deg) scale(1.2);
     }
 }
+
 
 .couple-names {
     font-family: 'Great Vibes', cursive;
