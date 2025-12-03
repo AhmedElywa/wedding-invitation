@@ -71,36 +71,6 @@
 
 	<div class="fh5co-loader"></div>
 
-
-	<!-- audio element: will play only if user clicked envelope -->
-<audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
-
-<script>
-(function(){
-  // Check if music should start (user clicked envelope)
-  const musicStarted = sessionStorage.getItem('musicStarted');
-
-  if (musicStarted === 'true') {
-    const audio = document.getElementById('bg-music');
-
-    // Start playing immediately
-    audio.play().then(() => {
-      console.log('Music playing from envelope click');
-    }).catch(err => {
-      console.warn('Music playback failed:', err);
-      // Fallback: try on first user interaction
-      const tryPlay = function() {
-        audio.play().catch(e => console.warn('Retry failed:', e));
-        document.removeEventListener('click', tryPlay);
-        window.removeEventListener('scroll', tryPlay);
-      };
-      document.addEventListener('click', tryPlay, { once: true });
-      window.addEventListener('scroll', tryPlay, { once: true, passive: true });
-    });
-  }
-})();
-</script>
-
 	<!-- Floating Hearts Background -->
 	<!-- <div class="hearts-container" id="hearts-container"></div> -->
 

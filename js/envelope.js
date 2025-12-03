@@ -31,13 +31,22 @@ function initEnvelope() {
         isOpening = true;
 
         // Start music playback and store in sessionStorage
-        sessionStorage.setItem('musicStarted', 'true');
+        const audio = document.getElementById('bg-music');
+        if (audio) {
+            audio.play().catch(e => console.log('Audio play failed', e));
+            sessionStorage.setItem('musicStarted', 'true');
+        }
 
         // Add opening animation class
         envelopeWrapper.classList.add('opening');
 
         // Wait for animation to complete, then navigate
         setTimeout(function() {
+            // Save current music time before navigating
+            if (audio) {
+                sessionStorage.setItem('musicTime', audio.currentTime);
+            }
+
             // Fade out effect
             document.body.style.transition = 'opacity 0.5s ease';
             document.body.style.opacity = '0';

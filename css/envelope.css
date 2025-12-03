@@ -242,7 +242,7 @@ body::before {
 .letter {
     position: absolute;
     width: 90%;
-    height: 85%;
+    height: 90%;
     background:
         linear-gradient(135deg, rgba(203, 166, 46, 0.03) 0%, transparent 100%),
         linear-gradient(to bottom, #fffef9 0%, #fffcf0 100%);
