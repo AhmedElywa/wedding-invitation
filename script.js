@@ -128,37 +128,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-// Background Music Autoplay Handling
-document.addEventListener('DOMContentLoaded', function() {
-    const audio = document.getElementById('bg-music');
-    
-    // Set volume (optional, but good for UX)
-    audio.volume = 0.5;
-
-    // Function to play music
-    const playMusic = () => {
-        audio.play().then(() => {
-            // Autoplay started!
-            console.log('Audio playing');
-            // Remove all event listeners once playing
-            document.removeEventListener('click', playMusic);
-            document.removeEventListener('touchstart', playMusic);
-            document.removeEventListener('scroll', playMusic);
-            document.removeEventListener('keydown', playMusic);
-        }).catch(error => {
-            // Autoplay was prevented.
-            console.log('Autoplay prevented. Waiting for user interaction.');
-        });
-    };
-
-    // Attempt to play immediately
-    playMusic();
-
-    // Add event listeners for user interaction fallback
-    // These events are commonly accepted by browsers to unlock audio
-    document.addEventListener('click', playMusic);
-    document.addEventListener('touchstart', playMusic);
-    document.addEventListener('scroll', playMusic);
-    document.addEventListener('keydown', playMusic);
-});

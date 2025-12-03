@@ -70,23 +70,25 @@
 <body>
 
 	<div class="fh5co-loader"></div>
-	
+
 
 	<audio id="bg-music" src="music.mp3" autoplay muted></audio>
 
-	<script>
-	document.addEventListener("click", () => {
-		const audio = document.getElementById("bg-music");
-		audio.muted = false;
-		audio.play();
-	});
+	<iframe id="silence_audio" src="music.mp3" allow="autoplay" style="display:none"></iframe>
 
-	// with scroll 
-	document.addEventListener("scroll", () => {
-		const audio = document.getElementById("bg-music");
-		audio.muted = false;
-		audio.play();
-	});
+	<script>
+		document.addEventListener("click", () => {
+			const audio = document.getElementById("bg-music");
+			audio.muted = false;
+			audio.play();
+		});
+
+		// with scroll 
+		document.addEventListener("scroll", () => {
+			const audio = document.getElementById("bg-music");
+			audio.muted = false;
+			audio.play();
+		});
 	</script>
 
 	<!-- Floating Hearts Background -->
