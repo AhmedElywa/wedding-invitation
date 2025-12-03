@@ -203,6 +203,14 @@
 @media screen and (min-width: 769px) {
   .flip-clock-wrapper {
     margin: 4em auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  .flipTimebox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 }
 
@@ -217,4 +225,12 @@
   font-size: 14px !important;
   font-weight: bold !important;
   font-family: Sofia Sans Condensed !important; 
+}
+
+/* Ensure flip cards are not visually cut off on small screens while animating */
+@media screen and (max-width: 480px) {
+  .flipTimebox .flip-clock-wrapper ul,
+  .flipTimebox .flip-clock-wrapper ul li {
+    overflow: visible !important;
+  }
 }

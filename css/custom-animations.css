@@ -162,9 +162,13 @@
   border-radius: 0;
   backdrop-filter: none;
   box-shadow: none;
-  margin: 20px 0;
+  margin: 40px auto 20px auto;
   position: relative;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 /* Enhanced button - with black text on gold, 3D effect */
@@ -487,6 +491,8 @@ html {
   animation: none;
   position: relative;
   z-index: 1;
+  margin: 0 auto;
+  display: block;
 }
 
 /* Button ripple effect */
@@ -820,10 +826,8 @@ html {
     border: none !important;
     box-shadow: none !important;
     background: transparent !important;
-    display: inline-block !important;
+    display: block !important;
     text-align: center !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
     position: relative !important;
   }
 

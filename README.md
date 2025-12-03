@@ -4,7 +4,7 @@ Welcome to our wedding website! We're thrilled to share our special day with you
 
 ## 📅 Save the Date
 
-**January 6, 2026 at 7:00 PM**
+**January 6, 2026 at 8:00 PM**
 High Level - Sindbad Village
 
 ---
