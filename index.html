@@ -70,24 +70,24 @@
 <body>
 
 	<div class="fh5co-loader"></div>
+	
 
-	<!-- Envelope intro overlay -->
-	<div id="invitation-intro" class="invitation-intro">
-		<div class="invitation-card animate-box" data-animate-effect="fadeInUp">
-			<div class="invitation-flap"></div>
-			<div class="invitation-inner">
-				<h2>Mahmoud &amp; Nouran</h2>
-				<p>You are warmly invited to our wedding celebration.</p>
-				<button id="open-invitation" class="btn btn-default">Open Invitation</button>
-			</div>
-		</div>
-	</div>
+	<audio id="bg-music" src="music.mp3" autoplay muted></audio>
 
-	<!-- Background Music (started when envelope is opened) -->
-	<audio id="bg-music">
-		<source src="music.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-	</audio>
+	<script>
+	document.addEventListener("click", () => {
+		const audio = document.getElementById("bg-music");
+		audio.muted = false;
+		audio.play();
+	});
+
+	// with scroll 
+	document.addEventListener("scroll", () => {
+		const audio = document.getElementById("bg-music");
+		audio.muted = false;
+		audio.play();
+	});
+	</script>
 
 	<!-- Floating Hearts Background -->
 	<!-- <div class="hearts-container" id="hearts-container"></div> -->
