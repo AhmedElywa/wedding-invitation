@@ -247,6 +247,53 @@
 		counter();
 		counterWayPoint();
 		smoothScroll();
+
+		// Background music: try autoplay, then start on first user interaction (scroll/click/touch/etc.)
+		var bg = document.getElementById('bg-music');
+		if (bg) {
+			var played = false;
+
+			var tryPlay = function () {
+				if (played) return;
+				var p = bg.play();
+				if (p && typeof p.then === 'function') {
+					p.then(function () {
+						played = true;
+					}).catch(function () {
+						// Autoplay blocked until user interaction
+					});
+				}
+			};
+
+			// Initial best-effort autoplay
+			tryPlay();
+
+			// Fallbacks: treat first scroll/click/touch/keyboard as interaction
+			var unlock = function () {
+				if (played) {
+					removeListeners();
+					return;
+				}
+				tryPlay();
+				if (played) {
+					removeListeners();
+				}
+			};
+
+			var removeListeners = function () {
+				window.removeEventListener('scroll', unlock);
+				document.removeEventListener('click', unlock);
+				document.removeEventListener('touchstart', unlock);
+				document.removeEventListener('wheel', unlock);
+				document.removeEventListener('keydown', unlock);
+			};
+
+			window.addEventListener('scroll', unlock, { passive: true });
+			document.addEventListener('click', unlock);
+			document.addEventListener('touchstart', unlock, { passive: true });
+			document.addEventListener('wheel', unlock, { passive: true });
+			document.addEventListener('keydown', unlock);
+		}
 	});
 
 
