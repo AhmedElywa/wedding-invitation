@@ -82,26 +82,48 @@
 			if (musicStarted === 'true') {
 				const audio = document.getElementById('bg-music');
 
-				// Check for saved time to resume seamlessly
-				const savedTime = sessionStorage.getItem('musicTime');
-				if (savedTime) {
-					audio.currentTime = parseFloat(savedTime);
-				}
+				// Function to resume music playback
+				const resumeMusic = function() {
+					// Check for saved time to resume seamlessly
+					const savedTime = sessionStorage.getItem('musicTime');
+					if (savedTime) {
+						const timeValue = parseFloat(savedTime);
+						// Set time only if it's valid
+						if (!isNaN(timeValue) && timeValue >= 0) {
+							audio.currentTime = timeValue;
+						}
+					}
 
-				// Start playing immediately
-				audio.play().then(() => {
-					console.log('Music playing from envelope click');
-				}).catch(err => {
-					console.warn('Music playback failed:', err);
-					// Fallback: try on first user interaction
-					const tryPlay = function () {
-						audio.play().catch(e => console.warn('Retry failed:', e));
-						document.removeEventListener('click', tryPlay);
-						window.removeEventListener('scroll', tryPlay);
-					};
-					document.addEventListener('click', tryPlay, { once: true });
-					window.addEventListener('scroll', tryPlay, { once: true, passive: true });
-				});
+					// Start playing immediately
+					return audio.play().then(() => {
+						console.log('Music resumed from:', audio.currentTime);
+						// Continuously save the music time while playing
+						setInterval(() => {
+							if (!audio.paused) {
+								sessionStorage.setItem('musicTime', audio.currentTime.toString());
+							}
+						}, 1000); // Update every second
+					}).catch(err => {
+						console.warn('Music playback failed:', err);
+						return Promise.reject(err);
+					});
+				};
+
+				// Try to play immediately when audio can play
+				audio.addEventListener('canplaythrough', function() {
+					resumeMusic().catch(() => {
+						// Fallback: try on first user interaction
+						const tryPlay = function () {
+							resumeMusic().catch(e => console.warn('Retry failed:', e));
+						};
+						document.addEventListener('click', tryPlay, { once: true });
+						window.addEventListener('scroll', tryPlay, { once: true, passive: true });
+						document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
+					});
+				}, { once: true });
+
+				// Force load the audio
+				audio.load();
 			}
 		})();
 	</script>

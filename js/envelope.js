@@ -30,46 +30,39 @@ function initEnvelope() {
         if (isOpening) return;
         isOpening = true;
 
-        // Start music playback
+        // Start music playback and store in sessionStorage
         const audio = document.getElementById('bg-music');
         if (audio) {
             audio.play().catch(e => console.log('Audio play failed', e));
+            sessionStorage.setItem('musicStarted', 'true');
         }
 
         // Add opening animation class
         envelopeWrapper.classList.add('opening');
 
-        // Wait for animation to complete, then transition
-        setTimeout(function() {
-            // Fade out envelope container
-            const envelopeContainer = document.getElementById('envelope-container');
-            envelopeContainer.style.transition = 'opacity 0.8s ease';
-            envelopeContainer.style.opacity = '0';
+        // Continuously update music time during animation
+        const updateInterval = setInterval(function() {
+            if (audio && !audio.paused) {
+                sessionStorage.setItem('musicTime', audio.currentTime.toString());
+            }
+        }, 50); // Update every 50ms for smooth transition
 
-            // Transition to main invitation
+        // Wait for animation to complete, then navigate
+        setTimeout(function() {
+            // Final save of current music time before navigating
+            clearInterval(updateInterval);
+            if (audio && !audio.paused) {
+                sessionStorage.setItem('musicTime', audio.currentTime.toString());
+            }
+
+            // Fade out effect
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = '0';
+
+            // Navigate to main invitation
             setTimeout(function() {
-                envelopeContainer.style.display = 'none';
-                
-                // Show main invitation
-                const mainInvitation = document.getElementById('main-invitation');
-                mainInvitation.style.display = 'block';
-                mainInvitation.style.opacity = '0';
-                
-                // Change body background to white (or whatever style.css defines)
-                // We can remove the envelope specific body styles by adding a class
-                document.body.classList.add('invitation-active');
-                
-                // Trigger reflow
-                void mainInvitation.offsetWidth;
-                
-                mainInvitation.style.transition = 'opacity 1s ease';
-                mainInvitation.style.opacity = '1';
-                
-                // Trigger scroll events to initialize animations if needed
-                window.dispatchEvent(new Event('scroll'));
-                window.dispatchEvent(new Event('resize'));
-                
-            }, 800);
+                window.location.href = 'invitation.html';
+            }, 500);
         }, 1500); // Wait for envelope open animation
     });
 

@@ -17,14 +17,6 @@ body {
     position: relative;
 }
 
-body.invitation-active {
-    background: #fff;
-    display: block;
-    overflow-y: auto;
-    height: auto;
-    min-height: 100vh;
-}
-
 body::before {
     content: '';
     position: absolute;
