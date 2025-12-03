@@ -128,3 +128,48 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+$(window).on('load', function() {
+    var bgMusic = $("#bg-music")[0];
+    if (bgMusic) {
+        bgMusic.muted = false;
+        var musicStarted = false;
+        
+        var scrollHandler = null;
+        
+        var startMusic = function() {
+            if (musicStarted) return;
+            musicStarted = true;
+            $("#bg-music")[0].play().catch(function() {
+                musicStarted = false; // Reset if blocked, allow retry
+            });
+            // Remove all listeners after first successful play attempt
+            if (scrollHandler) {
+                window.removeEventListener('scroll', scrollHandler);
+            }
+            $(window).off('wheel', startMusic);
+            $(document).off('click', startMusic);
+            $(document).off('touchstart', startMusic);
+            $(document).off('mousedown', startMusic);
+            $(document).off('keydown', startMusic);
+            $(document).off('touchmove', startMusic);
+        };
+        
+        // Try to start music automatically after 3 seconds
+        setTimeout(function() {
+            if (!musicStarted) {
+                startMusic();
+            }
+        }, 3000);
+        
+        // Start music on first user interaction (multiple event types for better browser support)
+        // Use native addEventListener for scroll with non-passive to ensure it's treated as user gesture
+        scrollHandler = startMusic;
+        window.addEventListener('scroll', scrollHandler, { passive: false });
+        $(window).on('wheel', startMusic); // Mouse wheel scroll (more reliable than scroll)
+        $(document).on('click', startMusic);
+        $(document).on('touchstart', startMusic); // Mobile touch
+        $(document).on('mousedown', startMusic); // Mouse button down
+        $(document).on('keydown', startMusic); // Keyboard press
+        $(document).on('touchmove', startMusic); // Touch move (mobile scroll)
+    }
+});
