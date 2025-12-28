@@ -335,8 +335,8 @@ body::before {
 /* First ornament at the top left (mirroring stamp on right) */
 .ornament:first-child {
     position: absolute;
-    top: -40px;
-    left: 25px;
+    top: -45px;
+    left: 18px;
     margin: 0;
     transform: rotate(-15deg);
 }
@@ -525,16 +525,17 @@ body::before {
 /* Stamp */
 .stamp {
     position: absolute;
-    top: 20px;
-    right: 25px;
+    top: 120px;
+    right: 40px;
     width: 60px;
     height: 60px;
-    border: 3px dashed rgba(203, 166, 46, 0.4);
+    border: none;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(203, 166, 46, 0.05);
+    background: transparent;
+    animation: sparkle 2s ease-in-out infinite;
     transform: rotate(15deg);
     z-index: 3;
 }

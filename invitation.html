@@ -83,7 +83,7 @@
 				const audio = document.getElementById('bg-music');
 
 				// Function to resume music playback
-				const resumeMusic = function() {
+				const resumeMusic = function () {
 					// Check for saved time to resume seamlessly
 					const savedTime = sessionStorage.getItem('musicTime');
 					if (savedTime) {
@@ -110,7 +110,7 @@
 				};
 
 				// Try to play immediately when audio can play
-				audio.addEventListener('canplaythrough', function() {
+				audio.addEventListener('canplaythrough', function () {
 					resumeMusic().catch(() => {
 						// Fallback: try on first user interaction
 						const tryPlay = function () {
@@ -202,22 +202,26 @@
 		<div id="fh5co-gallery" class="fh5co-section-gray">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-offset-2 text-center animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center animate-box">
 						<h2
-							style="font-family: 'Noto Nastaliq Urdu', 'Tahoma', sans-serif; font-size: 2em; margin-bottom: 50px; line-height: 1.8;">
+							style="font-family: 'Noto Nastaliq Urdu', 'Tahoma', sans-serif; font-size: 2.5em; margin-bottom: 50px; line-height: 1.8; ">
 							بَارَكَ اللهُ لَكُماَ وَبَارَكَ عَلَيْكُماَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</h2>
 					</div>
 				</div>
-				<div class="row row-bottom-padded-md">
+				<img data-animate-effect="fadeIn" src="images/pic8.png" alt="Gallery Image"
+					style="width: 85%; height: auto; border-radius: 7px; display: block; margin: 0 auto;">
+				<!-- <div class="row row-bottom-padded-md">
 					<div class="col-md-12">
 						<ul id="fh5co-gallery-list">
 
-							<li class="one-third animate-box" data-animate-effect="fadeIn"
-								style="background-image: url(images/pic5.png); ">
+							<li class="one-third animate-box vertical-image" data-animate-effect="fadeIn"
+								style="min-height: auto; background: none;">
+								<img src="images/pic8.png" alt="Gallery Image"
+									style="width: 100%; height: auto; border-radius: 7px; display: block;">
 								<div class="case-studies-summary">
 								</div>
-							</li>
-							<!-- 
+							</li> -->
+				<!-- 
 					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/RS2.jpg); ">
 							<div class="case-studies-summary">
 							</div>
@@ -227,9 +231,9 @@
 							</div>
 					</li> -->
 
-						</ul>
+				<!-- </ul>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 

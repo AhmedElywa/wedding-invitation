@@ -341,16 +341,27 @@
   border-radius: 15px;
   overflow: hidden;
   width: 100% !important;
-  background-size: cover !important;
   background-position: center !important;
   padding-top: 56.25% !important; /* 16:9 aspect ratio (9/16 = 0.5625) */
   position: relative !important;
   height: 0 !important;
 }
 
+/* Default: horizontal/landscape images use cover */
+#fh5co-gallery-list li:not(.vertical-image) {
+  background-size: cover !important;
+}
+
 #fh5co-gallery-list li:hover {
   transform: scale(1.01);
   box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+}
+
+/* Fix for vertical images - use contain instead of cover */
+#fh5co-gallery-list li.vertical-image {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-color: #f8f8f8 !important;
 }
 
 #fh5co-gallery-list li .case-studies-summary {
