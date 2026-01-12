@@ -1,11 +1,14 @@
-# 💕 Mahmoud & Nouran Wedding Invitation
+# 💕 Ahmed & Nada Wedding Invitation
 
 Welcome to our wedding website! We're thrilled to share our special day with you.
 
 ## 📅 Save the Date
 
-**January 6, 2026 at 8:00 PM**
-High Level - Sindbad Village
+**January 23, 2026 at 7:30 PM**
+
+قاعة الاميرات - قرية الخيال - اول طريق المحلة
+
+📍 [View Location on Google Maps](https://maps.app.goo.gl/T1bhAfrL54oEWQG59)
 
 ---
 
@@ -14,4 +17,4 @@ Two hearts, one journey. We are excited to celebrate our special day with our lo
 ---
 
 *With love,*
-**Mahmoud & Nouran** ❤️
+**Ahmed & Nada** ❤️
